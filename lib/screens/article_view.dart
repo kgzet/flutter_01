@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+// import 'package:auto_size_text/auto_size_text.dart';
+
 import 'home.dart';
 import '../models/article.dart';
+
 
 class ArticlePage extends StatelessWidget {
   ArticlePage({super.key, required this.pageIndex});
@@ -16,7 +19,7 @@ class ArticlePage extends StatelessWidget {
 
     final styleTitle = theme.textTheme.displayMedium!.copyWith(
       fontSize: 75,
-      color: theme.colorScheme.onPrimary,
+      color: theme.colorScheme.onSecondary,
       fontWeight: FontWeight.bold,
     );
     final styleSubtitle = theme.textTheme.displayMedium!.copyWith(
@@ -27,11 +30,12 @@ class ArticlePage extends StatelessWidget {
     );
     final styleDate = theme.textTheme.displayMedium!.copyWith(
       fontSize: 25,
-      color: theme.colorScheme.onPrimary,
+      color: theme.colorScheme.onSecondary,
       fontWeight: FontWeight.bold,
     );
     final styleContent = theme.textTheme.displayMedium!.copyWith(
       fontSize: 15,
+      // fontSize: 20,
       color: Colors.black,
       fontWeight: FontWeight.normal,
     );
@@ -54,7 +58,7 @@ class ArticlePage extends StatelessWidget {
             // const SizedBox(height: 10),
             Container(
               color: Theme.of(context).colorScheme.secondaryContainer,
-              margin: EdgeInsets.all(50),
+              margin: const EdgeInsets.all(50),
               child: Column(
                 children: [
                   Text(
@@ -83,12 +87,13 @@ class ArticlePage extends StatelessWidget {
                   const SizedBox(height: 30),
                   Container(
                     padding: const EdgeInsets.all(20.0),
-                    child: Text(
+                    child:
+                    Text(
                       articles[pageIndex].articleContent,
                       style: styleContent,
-                      )
+                      ),
                   ),
-                ], // articles[index]
+                ],
               ),
             ),
             Container(
@@ -96,8 +101,8 @@ class ArticlePage extends StatelessWidget {
               child: ElevatedButton.icon(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => const HomePage()
-                    ));
+                    builder: (context) => const HomePage(),
+                  ));
                 },
                 icon: Icon(icon),
                 label: const Text('go back to the list'),
