@@ -126,7 +126,7 @@ class ArticleList extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8.0),
                 child: Image.network(
-                  '$articleImage',
+                  articleImage,
                   width: 300,
                   height: 150,
                   fit:BoxFit.fill),
