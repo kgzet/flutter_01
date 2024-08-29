@@ -1,41 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-// import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'home.dart';
-import '../models/article.dart';
+import '../data/data.dart' as data;
 
 
 class ArticlePage extends StatelessWidget {
-  ArticlePage({super.key, required this.pageIndex});
-  // const ArticlePage({super.key});
+  const ArticlePage({super.key, required this.pageIndex});
 
   final int pageIndex;
-  final List<ArticleList> articles = ListGenerator.articlesList;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     final styleTitle = theme.textTheme.displayMedium!.copyWith(
-      fontSize: 75,
+      fontSize: 35.sp,
       color: theme.colorScheme.onSecondary,
       fontWeight: FontWeight.bold,
     );
     final styleSubtitle = theme.textTheme.displayMedium!.copyWith(
-      fontSize: 35,
-      // color: theme.colorScheme.onTertiary,
+      fontSize: 24.sp,
       color: const Color.fromARGB(255, 48, 37, 6),
       fontWeight: FontWeight.normal,
     );
     final styleDate = theme.textTheme.displayMedium!.copyWith(
-      fontSize: 25,
-      color: theme.colorScheme.onSecondary,
+      fontSize: 18.sp,
+      color: Colors.brown,
       fontWeight: FontWeight.bold,
     );
     final styleContent = theme.textTheme.displayMedium!.copyWith(
       fontSize: 15,
-      // fontSize: 20,
+      // fontSize: 20.sp,
       color: Colors.black,
       fontWeight: FontWeight.normal,
     );
@@ -62,34 +59,34 @@ class ArticlePage extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    '${articles[pageIndex].articleTitle.first} ${articles[pageIndex].articleTitle.second}',
+                    '${data.articlesList[pageIndex].articleTitle.first} ${data.articlesList[pageIndex].articleTitle.second}',
                     style: styleTitle,
-                    semanticsLabel: "${articles[pageIndex].articleTitle.first} ${articles[pageIndex].articleTitle.second}"
+                    semanticsLabel: "${data.articlesList[pageIndex].articleTitle.first} ${data.articlesList[pageIndex].articleTitle.second}"
                   ),
                   // const SizedBox(height: 30),
                   Container(
                     padding: const EdgeInsets.all(30),
-                    child:Image.network(articles[pageIndex].articleImage),
+                    child:Image.network(data.articlesList[pageIndex].articleImage),
                     ),
                   Container(
-                    padding: const EdgeInsets.only(right: 20.0, left: 20, top: 10, bottom: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.h,),
                     child: Text(
-                      articles[pageIndex].articleSubtitle,
+                      data.articlesList[pageIndex].articleSubtitle,
                       style: styleSubtitle, 
                     ),
                   ),
                   // const SizedBox(height: 20),
                   Text(
-                    // "${articles[pageIndex].articleDate.day}-${articles[pageIndex].articleDate.month}-${articles[pageIndex].articleDate.year}",
-                    DateFormat('dd/MM/yyyy').format(articles[pageIndex].articleDate),
+                    // "${data.articlesList[pageIndex].articleDate.day}-${data.articlesList[pageIndex].articleDate.month}-${data.articlesList[pageIndex].articleDate.year}",
+                    DateFormat('dd/MM/yyyy').format(data.articlesList[pageIndex].articleDate),
                     style: styleDate,
                   ),
-                  const SizedBox(height: 30),
+                  SizedBox(height: 30.h),
                   Container(
                     padding: const EdgeInsets.all(20.0),
                     child:
                     Text(
-                      articles[pageIndex].articleContent,
+                      data.articlesList[pageIndex].articleContent,
                       style: styleContent,
                       ),
                   ),
@@ -97,7 +94,7 @@ class ArticlePage extends StatelessWidget {
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(bottom: 50.0),
+              padding: EdgeInsets.only(bottom: 50.0.h),
               child: ElevatedButton.icon(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(
@@ -105,7 +102,7 @@ class ArticlePage extends StatelessWidget {
                   ));
                 },
                 icon: Icon(icon),
-                label: const Text('go back to the list'),
+                label: Text('go back to the list', style: TextStyle(fontSize: 20),),
               ),
             ),
           ],
@@ -117,7 +114,7 @@ class ArticlePage extends StatelessWidget {
   TextStyle _styleAppbarTitle(BuildContext context) {
     final theme = Theme.of(context);
     final styleAppbarTitle = theme.textTheme.displayMedium!.copyWith(
-      fontSize: 42,
+      fontSize: 25.sp,
       color: theme.colorScheme.onTertiary,
       fontWeight: FontWeight.bold,
     );
