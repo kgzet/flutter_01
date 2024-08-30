@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'screens/home.dart';
+import 'screens/home_list.dart';
 
 
 void main() {
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.amberAccent[100],
           useMaterial3: true,
         ),
-        home: const HomePage(),
+        // home: const HomePage(),
+        home: const HomePageList(),
       ),
     );
   }
