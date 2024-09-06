@@ -1,0 +1,102 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../data/data.dart';
+
+
+class CustomAppBar extends StatefulWidget {
+  final String title;
+  const CustomAppBar({super.key, required this.title});
+
+
+  @override
+  State<CustomAppBar> createState() => _CustomAppBarState();
+}
+
+class _CustomAppBarState extends State<CustomAppBar> {
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Center(
+      child: Container(
+        color: theme.colorScheme.surfaceContainer,
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
+        // constraints: const BoxConstraints(maxWidth: 500.0,),
+        child: Row(
+          children: [
+            const Expanded(
+              flex: 1,
+              child: BackButton(),
+            ),
+            // ModalRoute.canPopOf(context)
+            Expanded(child: Container(), flex: 3),
+            Expanded(
+              flex: 6,
+              child: Center(
+                child: AutoSizeText(
+                  widget.title,
+                  style: theme.textTheme.displayMedium!.copyWith(
+                    color: theme.colorScheme.onSurface,
+                  )
+                ),
+              ),
+            ),
+            Expanded(flex: 3, child: Icon(iconBack)),
+            Expanded(
+              flex: 1,
+              child: IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openEndDrawer();
+                },
+                icon: const Icon(Icons.menu),
+              )
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/*
+ 
+STACK
+
+    return Center(
+      child: Container(
+        color: theme.colorScheme.surfaceContainer,
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
+        child: Stack(
+          children: [
+            const Positioned(left: 0, bottom: 20, child: Align(
+              alignment: Alignment.bottomCenter,
+              child: BackButton())),
+            Align(child:
+              AutoSizeText(
+                widget.title,
+                style: theme.textTheme.displayMedium!.copyWith(
+                  color: theme.colorScheme.onSurface,
+                ),
+              ),
+            ),
+            Positioned(
+              right: 0,
+              child: Row (
+                children: [
+                  Icon(iconBack),
+                  IconButton(
+                    onPressed: () {
+                      Scaffold.of(context).openEndDrawer();
+                      },
+                    icon: const Icon(Icons.menu),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
+*/
