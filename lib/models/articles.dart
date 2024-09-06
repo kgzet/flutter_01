@@ -42,7 +42,7 @@ class ArticleList{
     List nounsCopy = List.from(nouns);
     List imagesCopy = List.from(images);
 
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 5; i++) {
       articleTitle = WordPair.random();
 
       adjectivesCopy.shuffle();
