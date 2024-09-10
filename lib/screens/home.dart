@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:intl/intl.dart';
 
@@ -22,18 +22,22 @@ class HomePage extends StatelessWidget {
       // fontWeight: FontWeight.bold,
     // );
 
-    final styleTitle = theme.textTheme.displayMedium!.copyWith(
-      fontSize: 22.sp,
+    final styleTitle = theme.textTheme.displaySmall!.copyWith(
+      // fontSize: 22.sp,
       // color: theme.colorScheme.onPrimary,
+      // color: theme.colorScheme.primary,
+      color: theme.colorScheme.onSurface,
       fontWeight: FontWeight.bold,
     );
-    final styleSubtitle = theme.textTheme.displayMedium!.copyWith(
-      fontSize: 15.sp,
+    final styleSubtitle = theme.textTheme.headlineSmall!.copyWith(
+      // fontSize: 15.sp,
       // color: theme.colorScheme.onPrimary,
-      fontWeight: FontWeight.normal,
+      // color: theme.colorScheme.secondary,
+      color: theme.colorScheme.onSurface,
+      // fontWeight: FontWeight.normal,
     );
-    final styleDate = theme.textTheme.displayMedium!.copyWith(
-      fontSize: 15.sp,
+    final styleDate = theme.textTheme.titleLarge!.copyWith(
+      // fontSize: 15.sp,
       // color: Colors.red,
       color: Theme.of(context).colorScheme.tertiary,
       fontWeight: FontWeight.bold,
@@ -79,7 +83,7 @@ class HomePage extends StatelessWidget {
                         child: Row(
                           children:[
                             Flexible(
-                              flex: 2,
+                              // flex: 2,
                               fit: FlexFit.tight,
                               child: Container(
                                 margin: const EdgeInsets.only(left: 10.0),
@@ -89,7 +93,7 @@ class HomePage extends StatelessWidget {
                               width: 12.0,
                             ),
                             Flexible(
-                              flex: 3,
+                              // flex: 3,
                               fit: FlexFit.tight,
                               child: Column(
                                 children: [
@@ -116,6 +120,7 @@ class HomePage extends StatelessWidget {
                                     DateFormat('dd-MM-yyyy').format(articlesList[index].articleDate),
                                     style: styleDate,
                                   ),
+                                  Text(MediaQuery.of(context).size.toString()),
                                 ],
                               ),
                             )
