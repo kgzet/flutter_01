@@ -17,20 +17,26 @@ class ArticlePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final styleTitle = theme.textTheme.displayLarge!.copyWith(
+    final styleTitle = theme.textTheme.displayMedium!.copyWith(
       letterSpacing: 4,
-      color: theme.colorScheme.primary,
+      // color: theme.colorScheme.onPrimary,
+      // color: theme.colorScheme.onSurface,
+      color: theme.colorScheme.onSecondaryContainer,
       fontWeight: FontWeight.bold,
     );
     final styleSubtitle = theme.textTheme.headlineMedium!.copyWith(
+      color: theme.colorScheme.onSecondaryContainer,
       // fontWeight: FontWeight.bold,
     );
     final styleDate = theme.textTheme.headlineSmall!.copyWith(
       // color: Colors.brown,
-      color: theme.colorScheme.onTertiary,
+      // color: theme.colorScheme.onTertiary,
+      // color: theme.colorScheme.tertiary,
+      color: theme.colorScheme.onSecondaryContainer,
       fontWeight: FontWeight.bold,
     );
     final styleContent = theme.textTheme.bodyLarge!.copyWith(
+      color: theme.colorScheme.onSecondaryContainer
       // fontSize: 15,
       // color: Colors.black,
       // fontWeight: FontWeight.normal,
@@ -67,6 +73,7 @@ class ArticlePage extends StatelessWidget {
                 // const SizedBox(height: 10),
                 Container(
                   color: theme.colorScheme.secondaryContainer,
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   margin: const EdgeInsets.only(bottom: 30.0, left: 8.0, right: 8.0),
                   child: Column(
                     children: [
@@ -81,13 +88,13 @@ class ArticlePage extends StatelessWidget {
 
                       // photo
                       Container(
-                        padding: const EdgeInsets.all(20),
+                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                         child:Image.network(articlesList[pageIndex].articleImage),
                         ),
 
                       // subtitle
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 10.0.w, vertical: 10.h,),
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
                           articlesList[pageIndex].articleSubtitle,
                           style: styleSubtitle, 
@@ -96,10 +103,13 @@ class ArticlePage extends StatelessWidget {
                       // const SizedBox(height: 20),
 
                       // date
-                      Text(
-                        // "${data.articlesList[pageIndex].articleDate.day}-${data.articlesList[pageIndex].articleDate.month}-${data.articlesList[pageIndex].articleDate.year}",
-                        DateFormat('dd/MM/yyyy').format(articlesList[pageIndex].articleDate),
-                        style: styleDate,
+                      Container(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        child: Text(
+                          // "${data.articlesList[pageIndex].articleDate.day}-${data.articlesList[pageIndex].articleDate.month}-${data.articlesList[pageIndex].articleDate.year}",
+                          DateFormat('dd/MM/yyyy').format(articlesList[pageIndex].articleDate),
+                          style: styleDate,
+                        ),
                       ),
                       // SizedBox(height: 30.h),
 
@@ -127,7 +137,8 @@ class ArticlePage extends StatelessWidget {
                     label: Text('go back to the list', 
                       // style: TextStyle(fontSize: 20,),
                       style: theme.textTheme.labelLarge!.copyWith(
-                        color: theme.colorScheme.primary,
+                        // color: theme.colorScheme.primary,
+                        color: theme.colorScheme.onSurface,
                       ),
                     ),
                   ),
