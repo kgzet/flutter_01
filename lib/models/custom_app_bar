@@ -64,8 +64,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
               flex: 3,
               child: MyClockWidget(),
               // child: ClockWidget(),
-              // child: Text(formattedDate),
-              // child: Icon(iconBack),
             ),
             Expanded(
             // Flexible(
