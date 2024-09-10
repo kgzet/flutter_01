@@ -9,4 +9,5 @@ IconData iconBack = Icons.arrow_back;
 final List<ArticleList> articlesList = ArticleList.getArticles();
 
 DateTime now = DateTime.now();
-String formattedDate = DateFormat('kk:mm:ss - EEE d MMM').format(now);
+// String formattedDate = DateFormat('kk:mm:ss - EEE d MMM y').format(now);
+String formattedDate = DateFormat('kk:mm:ss').format(now);
