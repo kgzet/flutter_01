@@ -46,29 +46,26 @@ class ArticleList{
       articleTitle = WordPair.random();
 
       adjectivesCopy.shuffle();
+      nounsCopy.shuffle();
       temp = adjectivesCopy[0];
       articleSubtitle = "${temp.capitalize()} ";
       for(var j = 0; j < 3; j++){
-        adjectivesCopy.shuffle();
-        articleSubtitle += adjectivesCopy[0];
+        articleSubtitle += adjectivesCopy[j + 1];
         articleSubtitle += " ";
-        nounsCopy.shuffle();
-        articleSubtitle += nounsCopy[0];
+        articleSubtitle += nounsCopy[j];
         articleSubtitle += " ";
       }
 
       articleDate = RandomDate.withRange(2020, 2024).random();
 
       adjectivesCopy.shuffle();
+      nounsCopy.shuffle();
       temp = adjectivesCopy[0];
       articleContent = "${temp.capitalize()} ";
-      articleContent="";
       for(var l = 0; l < 50; l++){
-        adjectivesCopy.shuffle();
-        articleContent += adjectivesCopy[0];
+        articleContent += adjectivesCopy[l + 1];
         articleContent += " ";
-        nounsCopy.shuffle();
-        articleContent += nounsCopy[0];
+        articleContent += nounsCopy[l];
         articleContent += " ";
       }
 
