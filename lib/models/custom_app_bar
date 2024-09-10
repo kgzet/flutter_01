@@ -1,14 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../data/data.dart';
+import 'clock_widget.dart';
+
 
 
 class CustomAppBar extends StatefulWidget {
   final String title;
   const CustomAppBar({super.key, required this.title});
-
 
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
@@ -21,29 +22,53 @@ class _CustomAppBarState extends State<CustomAppBar> {
     return Center(
       child: Container(
         color: theme.colorScheme.surfaceContainer,
-        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 18.0),
         // constraints: const BoxConstraints(maxWidth: 500.0,),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Expanded(
+             Expanded(
+            //  Flexible(
               flex: 1,
-              child: BackButton(),
+              child: Navigator.canPop(context) 
+                ? BackButton(
+                  onPressed: () {
+                     Navigator.maybePop(context);
+                  },
+                )
+                : Container(),
+              // child: BackButton(),
             ),
             // ModalRoute.canPopOf(context)
-            Expanded(child: Container(), flex: 3),
+            // Expanded(flex: 3, child: Container(
+            //   child: Text(MediaQuery.of(context).size.toString()),
+            // )),
+            Expanded(flex: 3, child: Container()),
+            // Flexible(flex: 3, child: Container()),
             Expanded(
+            // Flexible(
               flex: 6,
               child: Center(
                 child: AutoSizeText(
+                  // maxFontSize: 28,
                   widget.title,
-                  style: theme.textTheme.displayMedium!.copyWith(
+                  style: theme.textTheme.displaySmall!.copyWith(
                     color: theme.colorScheme.onSurface,
                   )
                 ),
               ),
             ),
-            Expanded(flex: 3, child: Icon(iconBack)),
+            const Expanded(
+            // Flexible(
+              flex: 3,
+              child: MyClockWidget(),
+              // child: ClockWidget(),
+              // child: Text(formattedDate),
+              // child: Icon(iconBack),
+            ),
             Expanded(
+            // Flexible(
               flex: 1,
               child: IconButton(
                 onPressed: () {
