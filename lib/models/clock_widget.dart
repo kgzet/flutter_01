@@ -14,16 +14,15 @@ class MyClockWidget extends StatefulWidget {
 class _MyClockWidgetState extends State<MyClockWidget> {
 
   String _timeString = "";
-  DateTime now = DateTime.now();
   late Timer timer;
 
   String _formatDateTime(DateTime dateTime) {
     // return DateFormat('kk:mm:ss\nEEE d MMM y').format(now);
-    return DateFormat('kk:mm:ss').format(now);
+    return DateFormat('kk:mm:ss').format(dateTime);
   }
 
   void _getTime() {
-    DateTime now = DateTime.now();
+    final DateTime now = DateTime.now();
     String formattedDate = _formatDateTime(now);
     setState(() {
       _timeString = formattedDate;
@@ -32,20 +31,22 @@ class _MyClockWidgetState extends State<MyClockWidget> {
 
   @override
   void initState() {
-    _timeString = _formatDateTime(DateTime.now());
-    timer = Timer.periodic(Duration(milliseconds: 1), (Timer t) => _getTime());
-    timer.cancel();
     super.initState();
+    _timeString = _formatDateTime(DateTime.now());
+    timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => _getTime());
+  }
+
+  @override
+  void dispose(){
+    timer.cancel();
+    super.dispose();
   }
   
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.pinkAccent,
-      child: AutoSizeText(
-        _timeString,
-        style: Theme.of(context).textTheme.headlineMedium,
-      ),
+    return AutoSizeText(
+      _timeString,
+      style: Theme.of(context).textTheme.headlineMedium,
     );
   }
 
@@ -69,24 +70,3 @@ class ClockWidget extends StatelessWidget {
     );
   }
 }
-
-/*
-
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
-class ClockWidget extends StatelessWidget {
-  const ClockWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: Stream.periodic(const Duration(seconds: 1)),
-      builder: (context, snapshot) {
-        return Text(DateFormat('MM/dd/yyyy hh:mm:ss').format(DateTime.now()));
-      },
-    );
-  }
-}
-
-*/
