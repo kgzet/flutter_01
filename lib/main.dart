@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import 'data/data.dart';
 import 'screens/home.dart';
 // import 'theme/theme.dart';
 import 'theme/theme_provider.dart';
@@ -22,7 +21,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       child: MaterialApp(
-        navigatorKey: NavigationService.myNavigatorKey,
       // return MaterialApp(
         title: 'Article list',
         // themeMode: ThemeMode.system,
