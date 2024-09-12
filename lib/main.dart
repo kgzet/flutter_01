@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
+import 'data/data.dart';
 import 'screens/home.dart';
-import 'theme/theme.dart';
-// import 'screens/home_list.dart';
-// import 'screens/home_grid_resp.dart';
+// import 'theme/theme.dart';
+import 'theme/theme_provider.dart';
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => ThemeProvider(),
+    child: const MyApp()));
 }
 
 
@@ -19,10 +22,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       child: MaterialApp(
+        navigatorKey: NavigationService.myNavigatorKey,
       // return MaterialApp(
         title: 'Article list',
-        theme: lightMode,
+        // themeMode: ThemeMode.system,
         home: const HomePage(),
+        theme: Provider.of<ThemeProvider>(context).themeData,
       ),
     );
   }
