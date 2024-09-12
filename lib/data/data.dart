@@ -5,6 +5,7 @@ import '../models/articles.dart';
 
 
 IconData iconBack = Icons.arrow_back;
+IconData iconMode = Icons.dark_mode_outlined;
 
 final List<ArticleList> articlesList = ArticleList.getArticles();
 
