@@ -31,7 +31,7 @@ class MyDrawer extends StatelessWidget {
             title: const Text('list of articles'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomePage()));
             },
           ),
           ListTile(
@@ -48,7 +48,7 @@ class MyDrawer extends StatelessWidget {
             title: const Text('about application'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => AboutPage()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AboutPage()));
             },
           ),
         ],
