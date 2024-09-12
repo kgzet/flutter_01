@@ -33,40 +33,21 @@ class _MyClockWidgetState extends State<MyClockWidget> {
   void initState() {
     super.initState();
     _timeString = _formatDateTime(DateTime.now());
-    timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => _getTime());
+    timer = Timer.periodic(const Duration(milliseconds: 1), (Timer t) => _getTime());
   }
 
   @override
   void dispose(){
-    timer.cancel();
     super.dispose();
+    timer.cancel();
   }
   
   @override
   Widget build(BuildContext context) {
     return AutoSizeText(
       _timeString,
-      style: Theme.of(context).textTheme.headlineMedium,
+      style: Theme.of(context).textTheme.headlineSmall,
     );
   }
 
-}
-
-
-class ClockWidget extends StatelessWidget {
-  const ClockWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: Stream.periodic(const Duration(seconds: 1)),
-      builder: (context, snapshot) {
-        return AutoSizeText(
-          // DateFormat('kk:mm:ss\nEEE d MMM y').format(DateTime.now()),
-          DateFormat('kk:mm:ss').format(DateTime.now()),
-          style: Theme.of(context).textTheme.headlineMedium,
-        );
-      },
-    );
-  }
 }
