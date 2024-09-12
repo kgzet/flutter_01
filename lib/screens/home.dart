@@ -99,7 +99,7 @@ class HomePage extends StatelessWidget {
                                 children: [
                                   // Text(
                                   AutoSizeText(
-                                    minFontSize: 25,
+                                    minFontSize: 20,
                                     maxFontSize: 45,
                                     '${articlesList[index].articleTitle.first} ${articlesList[index].articleTitle.second}',
                                     style: styleTitle,
@@ -107,20 +107,19 @@ class HomePage extends StatelessWidget {
                                   ),
                                   // Text(
                                   AutoSizeText(
-                                    minFontSize: 15,
+                                    minFontSize: 12,
                                     maxFontSize: 28,
                                     "${articlesList[index].articleSubtitle}...",
                                     style: styleSubtitle, 
                                   ),
                                   // Text(
                                   AutoSizeText(
-                                    minFontSize: 15,
+                                    minFontSize: 12,
                                     maxFontSize: 28,
                                     // "${articlesList[index].articleDate.day}-${articlesList[index].articleDate.month}-${articlesList[index].articleDate.year}",
                                     DateFormat('dd-MM-yyyy').format(articlesList[index].articleDate),
                                     style: styleDate,
                                   ),
-                                  Text(MediaQuery.of(context).size.toString()),
                                 ],
                               ),
                             )
