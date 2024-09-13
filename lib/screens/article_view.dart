@@ -19,39 +19,29 @@ class ArticlePage extends StatelessWidget {
 
     final styleTitle = theme.textTheme.displayMedium!.copyWith(
       letterSpacing: 4,
-      // color: theme.colorScheme.onPrimary,
       // color: theme.colorScheme.onSurface,
       color: theme.colorScheme.onSecondaryContainer,
       fontWeight: FontWeight.bold,
     );
+
     final styleSubtitle = theme.textTheme.headlineMedium!.copyWith(
       color: theme.colorScheme.onSecondaryContainer,
       // fontWeight: FontWeight.bold,
     );
+
     final styleDate = theme.textTheme.headlineSmall!.copyWith(
       // color: Colors.brown,
       // color: theme.colorScheme.onTertiary,
-      // color: theme.colorScheme.tertiary,
       color: theme.colorScheme.onSecondaryContainer,
       fontWeight: FontWeight.bold,
     );
+
     final styleContent = theme.textTheme.bodyLarge!.copyWith(
       color: theme.colorScheme.onSecondaryContainer
-      // fontSize: 15,
-      // color: Colors.black,
-      // fontWeight: FontWeight.normal,
     );
-
-    // TextStyle styleAppbarTitle = _styleAppbarTitle(context);
+  
 
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.amberAccent,
-      //   title: const Text("A very interesting article"),
-      //   titleTextStyle: styleAppbarTitle,
-      //   centerTitle: true,
-      //   elevation: 2.0,
-      // ),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(MediaQuery.of(context).size.height / 8),
         child: const CustomAppBar(title: 'A very interesting article'),
@@ -59,7 +49,7 @@ class ArticlePage extends StatelessWidget {
 
       endDrawer: const MyDrawer(aa:1),
       
-      // body: ListView.builder(
+      
       body: Center(
         child: Container(
           padding: const EdgeInsets.only(top: 10.0),
@@ -70,7 +60,6 @@ class ArticlePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // const SizedBox(height: 10),
                 Container(
                   color: theme.colorScheme.secondaryContainer,
                   padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -82,9 +71,7 @@ class ArticlePage extends StatelessWidget {
                       Text(
                         '${articlesList[pageIndex].articleTitle.first} ${articlesList[pageIndex].articleTitle.second}',
                         style: styleTitle,
-                        // semanticsLabel: "${articlesList[pageIndex].articleTitle.first} ${articlesList[pageIndex].articleTitle.second}"
                       ),
-                      // const SizedBox(height: 30),
 
                       // photo
                       Container(
@@ -100,18 +87,15 @@ class ArticlePage extends StatelessWidget {
                           style: styleSubtitle, 
                         ),
                       ),
-                      // const SizedBox(height: 20),
 
                       // date
                       Container(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Text(
-                          // "${data.articlesList[pageIndex].articleDate.day}-${data.articlesList[pageIndex].articleDate.month}-${data.articlesList[pageIndex].articleDate.year}",
                           DateFormat('dd/MM/yyyy').format(articlesList[pageIndex].articleDate),
                           style: styleDate,
                         ),
                       ),
-                      // SizedBox(height: 30.h),
 
                       // text = content
                       Container(
@@ -125,6 +109,7 @@ class ArticlePage extends StatelessWidget {
                     ],
                   ),
                 ),
+
                 Container(
                   padding: EdgeInsets.only(bottom: 50.0.h),
                   child: ElevatedButton.icon(
@@ -135,14 +120,13 @@ class ArticlePage extends StatelessWidget {
                     },
                     icon: Icon(iconBack),
                     label: Text('go back to the list', 
-                      // style: TextStyle(fontSize: 20,),
                       style: theme.textTheme.labelLarge!.copyWith(
-                        // color: theme.colorScheme.primary,
                         color: theme.colorScheme.onSurface,
                       ),
                     ),
                   ),
                 ),
+
               ],
             ),
           ),
@@ -150,14 +134,4 @@ class ArticlePage extends StatelessWidget {
       ),
     );
   }
-
-  // TextStyle _styleAppbarTitle(BuildContext context) {
-  //   final theme = Theme.of(context);
-  //   final styleAppbarTitle = theme.textTheme.displayMedium!.copyWith(
-  //     fontSize: 25.sp,
-  //     color: theme.colorScheme.onTertiary,
-  //     fontWeight: FontWeight.bold,
-  //   );
-  //   return styleAppbarTitle;
-  // }
 }
