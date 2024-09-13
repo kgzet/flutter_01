@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
+import 'screens/about.dart';
 import 'screens/home.dart';
-// import 'theme/theme.dart';
 import 'theme/theme_provider.dart';
 
 
@@ -23,9 +23,15 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
       // return MaterialApp(
         title: 'Article list',
+        initialRoute: '/home',
+        routes: {
+          '/home': (context) => const HomePage(),
+          '/about': (context) => const AboutPage(),
+        },
         // themeMode: ThemeMode.system,
-        home: const HomePage(),
+        // home: const HomePage(),
         theme: Provider.of<ThemeProvider>(context).themeData,
+        // darkTheme: ThemeData(),
       ),
     );
   }
