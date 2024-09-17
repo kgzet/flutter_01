@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'dart:io';
 
 import '../data/data.dart';
 import '../models/custom_app_bar.dart';
@@ -39,8 +40,6 @@ class _HomePageState extends State<HomePage> {
       fontWeight: FontWeight.bold,
     );
 
-    bool canPop = false;
-
     Future<bool?> showBackDialog() {
       return showDialog<bool>(
         context: context,
@@ -76,6 +75,22 @@ class _HomePageState extends State<HomePage> {
     }
 
     // ModalRoute.of(context)!.isFirst;
+    bool canPop = false;
+
+    //     Future<bool> _canPop() async {
+    //   if (Navigator.of(context).canPop()) {
+    //     canPop = true;
+    //     return true;
+    //   }
+    //   else {
+    //     bool shouldExit = await showBackDialog() ?? false;
+    //     if (shouldExit) {
+    //       SystemNavigator.pop();
+    //     }
+    //     canPop = false;
+    //     return false;
+    //   }
+    // }
 
     return PopScope(
       canPop: canPop,
@@ -84,7 +99,6 @@ class _HomePageState extends State<HomePage> {
           return;
         }
         bool shouldPop = await showBackDialog() ?? false;
-        
         if (shouldPop) {
           SystemNavigator.pop();
         }
@@ -108,8 +122,6 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: (){
-                      // print((ModalRoute.of(context)!.isFirst));
-                      
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) => ArticlePage(pageIndex: index)
                       ));},
@@ -134,8 +146,9 @@ class _HomePageState extends State<HomePage> {
                                     margin: const EdgeInsets.only(left: 10.0),
                                     height: 200.0,
                                     width: 200.0,
-                                    decoration: BoxDecoration(image: DecorationImage(image: NetworkImage(articlesList[index].articleImage))),
-                                    child: Image.network(articlesList[index].articleImage, fit: BoxFit.contain,)
+                                    // decoration: BoxDecoration(image: DecorationImage(image: NetworkImage(articlesList[index].articleImage))),
+                                    // child: Image.network(articlesList[index].articleImage, fit: BoxFit.contain,)
+                                    child: Image.file(File(articlesList[index].articleImage), fit: BoxFit.contain,)
                                   ),
                                 ),
                               ),
