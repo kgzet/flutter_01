@@ -23,12 +23,23 @@ class ArticleList{
   static List<ArticleList> getArticles(){
     List<ArticleList> articles = [];
     
-    List<String> images = ['https://images.pexels.com/photos/26707538/pexels-photo-26707538/free-photo-of-snieg-natura-las-drzewa.jpeg',
-      'https://images.pexels.com/photos/26617846/pexels-photo-26617846/free-photo-of-pole-kurz-pyl-gospodarstwo.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'https://images.pexels.com/photos/26455238/pexels-photo-26455238/free-photo-of-morze-ocean-gleboki-plywanie.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'https://images.pexels.com/photos/26570912/pexels-photo-26570912/free-photo-of-natura-plywanie-podwodny-fotografia-zwierzecia.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'https://images.pexels.com/photos/26045508/pexels-photo-26045508/free-photo-of-delfiny-z-baja-california-sur.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'https://images.pexels.com/photos/26555831/pexels-photo-26555831/free-photo-of-przeziebienie-zimny-gora-lodowa-snieg.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    // List<String> images = ['https://images.pexels.com/photos/26707538/pexels-photo-26707538/free-photo-of-snieg-natura-las-drzewa.jpeg',
+    //   'https://images.pexels.com/photos/26617846/pexels-photo-26617846/free-photo-of-pole-kurz-pyl-gospodarstwo.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    //   'https://images.pexels.com/photos/26455238/pexels-photo-26455238/free-photo-of-morze-ocean-gleboki-plywanie.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    //   'https://images.pexels.com/photos/26570912/pexels-photo-26570912/free-photo-of-natura-plywanie-podwodny-fotografia-zwierzecia.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    //   'https://images.pexels.com/photos/26045508/pexels-photo-26045508/free-photo-of-delfiny-z-baja-california-sur.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    //   'https://images.pexels.com/photos/26555831/pexels-photo-26555831/free-photo-of-przeziebienie-zimny-gora-lodowa-snieg.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    // ];
+
+// Image.file(File(path))
+// Container(child: Image.file(File('assets/img/dolphins.png'))),
+    
+    List<String> images = ['assets/img/dolphins.png',
+      'assets/img/fox.png',
+      'assets/img/glacier.png',
+      'assets/img/horses.png',
+      'assets/img/shark.png',
+      'assets/img/turtle.png'
     ];
 
     String temp = "";
@@ -42,7 +53,7 @@ class ArticleList{
     List nounsCopy = List.from(nouns);
     List imagesCopy = List.from(images);
 
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 100; i++) {
       articleTitle = WordPair.random();
 
       adjectivesCopy.shuffle();
