@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -76,7 +78,8 @@ class ArticlePage extends StatelessWidget {
                       // photo
                       Container(
                         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                        child:Image.network(articlesList[pageIndex].articleImage),
+                        // child:Image.network(articlesList[pageIndex].articleImage),
+                        child: Image.file(File(articlesList[pageIndex].articleImage), fit: BoxFit.contain,),
                         ),
 
                       // subtitle
