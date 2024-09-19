@@ -122,6 +122,8 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: (){
+                      // print((ModalRoute.of(context)!.isFirst));
+                      
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) => ArticlePage(pageIndex: index)
                       ));},
@@ -148,7 +150,8 @@ class _HomePageState extends State<HomePage> {
                                     width: 200.0,
                                     // decoration: BoxDecoration(image: DecorationImage(image: NetworkImage(articlesList[index].articleImage))),
                                     // child: Image.network(articlesList[index].articleImage, fit: BoxFit.contain,)
-                                    child: Image.file(File(articlesList[index].articleImage), fit: BoxFit.contain,)
+                                    // child: Image.file(File(articlesList[index].articleImage), fit: BoxFit.contain,),
+                                    child: Image.asset(articlesList[index].articleImage, fit: BoxFit.contain,),
                                   ),
                                 ),
                               ),
