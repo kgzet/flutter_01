@@ -26,42 +26,57 @@ class _CustomAppBarState extends State<CustomAppBar> {
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 18.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
              Flexible(
               flex: 1,
-              child: Navigator.canPop(context) 
-                ? BackButton(
-                  onPressed: () {
-                     Navigator.maybePop(context);
-                  },
-                )
-                : Container(),
+              child: SizedBox.expand(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Navigator.canPop(context) 
+                    ? BackButton(
+                      onPressed: () {
+                        Navigator.maybePop(context);
+                      },
+                    )
+                    : Container(),
+                ),
+              ),
             ),
             Flexible(
               flex: 1, 
-              child: GestureDetector(
-                onTap: (){
-                  Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
-                },
-                // child: const Icon(Icons.tonality),
-                child: Icon(iconMode),
+              child: Center(
+                child: GestureDetector(
+                  onTap: (){
+                    Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+                  },
+                  // child: const Icon(Icons.tonality),
+                  child: SizedBox.fromSize(
+                    child: FittedBox(child: Icon(iconMode)),
+                  ),
+                ),
               ),
             ),
             Flexible(
               flex: 5,
               child: Center(
-                child: AutoSizeText(
-                  widget.title,
-                  style: theme.textTheme.headlineSmall!.copyWith(
-                    color: theme.colorScheme.onSurface,
-                  )
+                child: SizedBox.fromSize(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: AutoSizeText(
+                      widget.title,
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.headlineSmall!.copyWith(
+                        color: theme.colorScheme.onSurface,
+                      )
+                    ),
+                  ),
                 ),
               ),
             ),
-            const Flexible(
+            Flexible(
               flex: 3,
-              child: MyClockWidget(),
+              child: SizedBox.fromSize(child: const MyClockWidget()),
             ),
             Flexible(
               flex: 1,
