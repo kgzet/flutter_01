@@ -46,6 +46,8 @@ class _MyClockWidgetState extends State<MyClockWidget> {
   Widget build(BuildContext context) {
     return AutoSizeText(
       _timeString,
+      textAlign: TextAlign.center,
+      maxLines: 1,
       style: Theme.of(context).textTheme.headlineSmall,
     );
   }
