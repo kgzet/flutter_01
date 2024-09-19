@@ -34,7 +34,8 @@ class ArticleList{
 // Image.file(File(path))
 // Container(child: Image.file(File('assets/img/dolphins.png'))),
     
-    List<String> images = ['assets/img/dolphins.png',
+    List<String> images = [
+      'assets/img/dolphins.png',
       'assets/img/fox.png',
       'assets/img/glacier.png',
       'assets/img/horses.png',
